@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us – Total Trust Loan Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-[#222] font-sans">
+
+  <!-- Header with Navigation -->
+  <header class="bg-[#a62d3c] shadow-md animate-fadeInDown">
+    <div class="max-w-7xl mx-auto flex items-center py-4 px-4">
+      <div class="flex items-center gap-3">
+        <div class="flex items-center justify-center">
+          <img src="logo.png" alt="Company Logo" class="w-20 h-20 object-contain block" />
+        </div>
+        <span class="ml-2 text-3xl font-extrabold text-white drop-shadow-lg tracking-wide px-2 py-1 rounded bg-[#a62d3c]/80 border-2 border-white shadow">
+          Total Trust <span class="text-[#ffe5e5] font-black">Loan Solutions</span>
+        </span>
+      </div>
+      <nav class="flex gap-8 text-lg font-semibold ml-8">
+        <a href="index.html" class="text-white hover:text-[#ffe5e5] hover:underline transition">Home</a>
+        <a href="calculator.html" class="text-white hover:text-[#ffe5e5] hover:underline transition">Loan Calculator</a>
+        <a href="about.html" class="text-white hover:text-[#ffe5e5] hover:underline transition">About Us</a>
+        <a href="contact.html" class="text-[#ffe5e5] underline font-bold transition">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contact Hero -->
+  <section class="py-12 px-4 text-center" data-animate>
+    <h1 class="text-3xl md:text-4xl font-extrabold text-[#a62d3c] mb-3 animate-fadeInDown">Need Help? Let's Talk.</h1>
+    <p class="text-lg text-[#a62d3c]/80 mb-6 animate-fadeInUp">Send us your loan-related queries, and we'll reach out shortly.</p>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="flex justify-center items-center py-8 px-4 bg-[#fff7f0] min-h-[60vh]" data-animate>
+    <div class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-8 relative">
+      <!-- Success Message -->
+      <div id="contact-success" class="hidden opacity-0 translate-y-8 transition-all duration-700 absolute inset-0 flex flex-col items-center justify-center bg-white/95 z-20 rounded-2xl">
+        <div class="flex flex-col items-center">
+          <div class="text-green-500 mb-2">
+            <svg class="w-12 h-12 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke-width="2" class="text-green-200"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 13l3 3 7-7"/>
+            </svg>
+          </div>
+          <div class="text-xl font-bold text-green-700 mb-2">Your message has been sent successfully.</div>
+          <div class="text-base text-[#222] mb-4">Our team will get back to you soon.</div>
+          <button id="dismiss-success" class="text-2xl text-gray-400 hover:text-gray-700 transition" aria-label="Dismiss">&times;</button>
+        </div>
+      </div>
+      <!-- Contact Form -->
+      <form id="contact-form" action="https://formsubmit.co/nitewastaken@gmail.com" method="POST" class="space-y-6" autocomplete="off">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="fullname" class="block text-sm font-semibold mb-1">Full Name <span class="text-red-500">*</span></label>
+            <input type="text" id="fullname" name="Full Name" required class="w-full rounded border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none transition shadow-sm" placeholder="Your Name">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-semibold mb-1">Email Address <span class="text-red-500">*</span></label>
+            <input type="email" id="email" name="Email" required class="w-full rounded border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none transition shadow-sm" placeholder="you@email.com">
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-semibold mb-1">Phone Number <span class="text-red-500">*</span></label>
+            <input type="tel" id="phone" name="Phone" required class="w-full rounded border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none transition shadow-sm" placeholder="9876543210">
+          </div>
+          <div>
+            <label for="loanamount" class="block text-sm font-semibold mb-1">Loan Amount (₹) <span class="text-red-500">*</span></label>
+            <input type="number" id="loanamount" name="Loan Amount" required min="1000" max="1000000" class="w-full rounded border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none transition shadow-sm" placeholder="₹50,000">
+          </div>
+          <div>
+            <label for="purpose" class="block text-sm font-semibold mb-1">Purpose of Loan</label>
+            <select id="purpose" name="Purpose" class="w-full rounded border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none transition shadow-sm">
+              <option>Medical</option>
+              <option>Education</option>
+              <option>Business</option>
+              <option>Rent</option>
+              <option>Travel</option>
+              <option>Other</option>
+            </select>
+            <input type="text" id="purpose-other" name="Purpose (Other)" class="w-full rounded border border-gray-300 px-4 py-2 mt-2 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none transition shadow-sm hidden" placeholder="Please specify other purpose">
+          </div>
+          <div>
+            <label for="income" class="block text-sm font-semibold mb-1">Monthly Income</label>
+            <input type="number" id="income" name="Monthly Income" min="0" class="w-full rounded border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none transition shadow-sm" placeholder="₹30,000">
+          </div>
+          <div>
+            <label for="employment" class="block text-sm font-semibold mb-1">Employment Type</label>
+            <select id="employment" name="Employment Type" class="w-full rounded border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none transition shadow-sm">
+              <option>Salaried</option>
+              <option>Self-Employed</option>
+              <option>Student</option>
+              <option>Retired</option>
+              <option>Unemployed</option>
+              <option>Other</option>
+            </select>
+            <input type="text" id="employment-other" name="Employment Type (Other)" class="w-full rounded border border-gray-300 px-4 py-2 mt-2 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none transition shadow-sm hidden" placeholder="Please specify other employment type">
+          </div>
+          <div>
+            <label for="notes" class="block text-sm font-semibold mb-1">Additional Notes / Message</label>
+            <textarea id="notes" name="Message" rows="2" class="w-full rounded border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none transition shadow-sm" placeholder="Type your message..."></textarea>
+          </div>
+        </div>
+        <div class="pt-4 flex justify-center">
+          <button type="submit" id="contact-submit" class="bg-[#a62d3c] hover:bg-[#8b2331] text-white font-bold py-3 px-10 rounded shadow transition-all duration-300 transform hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-[#a62d3c]">
+            Send Message
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#a62d3c] text-white py-4 text-center text-sm animate-fadeInUp">
+    <div class="max-w-6xl mx-auto px-4">
+      © 2025 All rights reserved | Designed by Depthline Studios | 📞 8920515100 | ✉️ kumudk.tyagi@gmail.com
+    </div>
+  </footer>
+
+  <style>
+    .animate-fadeInDown { animation: fadeInDown 1s both; }
+    .animate-fadeInUp { animation: fadeInUp 1s both; }
+    @keyframes fadeInDown { from { opacity:0; transform:translateY(-30px);} to {opacity:1; transform:none;} }
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(30px);} to {opacity:1; transform:none;} }
+  </style>
+  <script src="script.js"></script>
+</body>
+</html>

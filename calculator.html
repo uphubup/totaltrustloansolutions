@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Calculator – Total Trust Loan Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-[#222] font-sans">
+
+  <!-- Header with Navigation -->
+  <header class="bg-[#a62d3c] shadow-md animate-fadeInDown">
+    <div class="max-w-7xl mx-auto flex items-center py-4 px-4">
+      <div class="flex items-center gap-3">
+        <div class="flex items-center justify-center">
+          <img src="logo.png" alt="Company Logo" class="w-20 h-20 object-contain block" />
+        </div>
+        <span class="ml-2 text-3xl font-extrabold text-white drop-shadow-lg tracking-wide px-2 py-1 rounded bg-[#a62d3c]/80 border-2 border-white shadow">
+          Total Trust <span class="text-[#ffe5e5] font-black">Loan Solutions</span>
+        </span>
+      </div>
+      <nav class="flex gap-8 text-lg font-semibold ml-8">
+        <a href="index.html" class="text-white hover:text-[#ffe5e5] hover:underline transition">Home</a>
+        <a href="calculator.html" class="text-[#ffe5e5] underline font-bold transition">Loan Calculator</a>
+        <a href="about.html" class="text-white hover:text-[#ffe5e5] hover:underline transition">About Us</a>
+        <a href="contact.html" class="text-white hover:text-[#ffe5e5] hover:underline transition">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Loan Calculator Hero -->
+  <section class="relative bg-gradient-to-br from-[#a62d3c]/90 to-[#f7c5c5]/60 py-12 md:py-20 flex flex-col items-center justify-center px-4">
+    <div class="max-w-2xl w-full mx-auto text-center animate-fadeInUp">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">Loan Calculator</h1>
+      <p class="text-lg md:text-xl text-white/90 mb-6">
+        Instantly estimate your monthly EMI, total repayment, and interest for any loan amount. No hidden fees, no surprises—just clarity.
+      </p>
+    </div>
+  </section>
+
+  <!-- Calculator Card -->
+  <section class="flex justify-center items-center py-12 px-4 bg-[#fff7f0] min-h-[60vh]">
+    <div class="w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 animate-fadeInUp">
+      <h2 class="text-2xl font-bold text-[#a62d3c] mb-6 flex items-center gap-2">
+        <svg class="w-7 h-7 text-[#a62d3c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3"/>
+          <circle cx="12" cy="12" r="10" stroke-width="2"/>
+        </svg>
+        Calculate Your Loan
+      </h2>
+      <form id="loanForm" class="space-y-5">
+        <!-- Loan Amount -->
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="amount">Loan Amount (₹)</label>
+          <div class="relative">
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-[#a62d3c] text-lg">₹</span>
+            <input type="number" id="amount" name="amount" min="1000" max="1000000" step="1000" placeholder="₹50,000" class="pl-8 pr-3 py-2 w-full rounded border border-gray-300 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none" required>
+          </div>
+          <span class="text-xs text-gray-500">Min ₹1,000 – Max ₹10,00,000</span>
+        </div>
+        <!-- Interest Rate -->
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="rate">Interest Rate (%)</label>
+          <div class="relative">
+            <input type="number" id="rate" name="rate" min="1" max="36" step="0.01" placeholder="12" class="pl-3 pr-10 py-2 w-full rounded border border-gray-300 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none" required>
+            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[#a62d3c] text-lg">%</span>
+          </div>
+          <span class="text-xs text-gray-500">Typical range: 10% – 36% per annum</span>
+        </div>
+        <!-- Tenure -->
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="tenure">Loan Tenure</label>
+          <div class="flex gap-2">
+            <input type="number" id="tenure" name="tenure" min="1" max="120" placeholder="12" class="pl-3 pr-3 py-2 w-full rounded border border-gray-300 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none" required>
+            <select id="tenureType" class="rounded border border-gray-300 focus:ring-2 focus:ring-[#a62d3c] focus:outline-none">
+              <option value="months">Months</option>
+              <option value="years">Years</option>
+            </select>
+          </div>
+          <span class="text-xs text-gray-500">E.g., 12 months or 1 year</span>
+        </div>
+        <!-- Buttons -->
+        <div class="flex gap-4">
+          <button type="submit" class="flex-1 bg-[#a62d3c] hover:bg-[#8b2331] text-white font-bold py-2 rounded shadow transition">Calculate</button>
+          <button type="button" id="resetBtn" class="flex-1 bg-gray-200 hover:bg-gray-300 text-[#a62d3c] font-bold py-2 rounded shadow transition">Reset</button>
+        </div>
+      </form>
+      <!-- Results -->
+      <div id="results" class="mt-8 hidden opacity-0 transition-opacity duration-500">
+        <h3 class="text-xl font-bold text-[#a62d3c] mb-4 flex items-center gap-2">
+          <svg class="w-6 h-6 text-[#a62d3c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          Your Results
+        </h3>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">Monthly EMI:</span>
+            <span id="emi" class="font-bold text-green-700 text-lg"></span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-lg">Total Repayable Amount:</span>
+            <span id="total" class="font-bold text-blue-700 text-lg"></span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-lg">Total Interest Payable:</span>
+            <span id="interest" class="font-bold text-red-700 text-lg"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#a62d3c] text-white py-4 text-center text-sm animate-fadeInUp">
+    <div class="max-w-6xl mx-auto px-4">
+      © 2025 All rights reserved | Designed by Depthline Studios | 📞 8920515100 | ✉️ kumudk.tyagi@gmail.com
+    </div>
+  </footer>
+
+  <!-- Tailwind Animations -->
+  <style>
+    .animate-fadeInDown { animation: fadeInDown 1s both; }
+    .animate-fadeInUp { animation: fadeInUp 1s both; }
+    @keyframes fadeInDown { from { opacity:0; transform:translateY(-30px);} to {opacity:1; transform:none;} }
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(30px);} to {opacity:1; transform:none;} }
+  </style>
+  <script>
+    // Loan Calculator Logic
+    function formatINR(num) {
+      return '₹' + Number(num).toLocaleString('en-IN', {maximumFractionDigits: 2});
+    }
+    function calculateEMI(P, r, n) {
+      if (r === 0) return P / n;
+      const emi = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+      return emi;
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('loanForm');
+      const results = document.getElementById('results');
+      const emiEl = document.getElementById('emi');
+      const totalEl = document.getElementById('total');
+      const interestEl = document.getElementById('interest');
+      const resetBtn = document.getElementById('resetBtn');
+      const tenureType = document.getElementById('tenureType');
+      // Animate in
+      document.querySelectorAll('.animate-fadeInDown, .animate-fadeInUp').forEach(el => {
+        el.classList.add('opacity-0');
+        setTimeout(() => el.classList.add('opacity-100'), 100);
+      });
+
+      function showResults(emi, total, interest) {
+        emiEl.textContent = formatINR(emi);
+        totalEl.textContent = formatINR(total);
+        interestEl.textContent = formatINR(interest);
+        results.classList.remove('hidden');
+        setTimeout(() => results.classList.add('opacity-100'), 10);
+        results.classList.remove('opacity-0');
+        // Smooth scroll to results
+        results.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      function hideResults() {
+        results.classList.remove('opacity-100');
+        results.classList.add('opacity-0');
+        setTimeout(() => results.classList.add('hidden'), 500);
+      }
+      function validateInputs(amount, rate, tenure) {
+        if (amount < 1000 || amount > 1000000) return false;
+        if (rate < 1 || rate > 36) return false;
+        if (tenure < 1 || tenure > 120) return false;
+        return true;
+      }
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const amount = parseFloat(form.amount.value);
+        const rate = parseFloat(form.rate.value);
+        let tenure = parseInt(form.tenure.value, 10);
+        if (tenureType.value === 'years') tenure *= 12;
+        if (!validateInputs(amount, rate, tenure)) {
+          hideResults();
+          return;
+        }
+        const monthlyRate = rate / 12 / 100;
+        const emi = calculateEMI(amount, monthlyRate, tenure);
+        const total = emi * tenure;
+        const interest = total - amount;
+        showResults(emi, total, interest);
+      });
+      // Only show results on submit, not on input
+      form.addEventListener('input', function() {
+        hideResults();
+      });
+      resetBtn.addEventListener('click', function() {
+        form.reset();
+        hideResults();
+      });
+    });
+
+    function scrollToEligibility(e) {
+      e.preventDefault();
+      const el = document.getElementById('eligibility');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    // Contact Us Form Success Message Logic
+    function setupContactForm() {
+      const form = document.getElementById('contact-form');
+      const success = document.getElementById('contact-success');
+      const dismiss = document.getElementById('dismiss-success');
+      const submitBtn = document.getElementById('contact-submit');
+      if (!form || !success || !dismiss || !submitBtn) return;
+
+      // Prevent double submit
+      let messageShown = false;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (messageShown) return;
+        // Actually submit the form to FormSubmit
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(() => {
+          // Show success message
+          success.classList.remove('hidden');
+          setTimeout(() => success.classList.add('opacity-100', 'translate-y-0'), 10);
+          success.classList.remove('opacity-0', 'translate-y-8');
+          submitBtn.disabled = true;
+          messageShown = true;
+          // Scroll to message
+          setTimeout(() => {
+            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 200);
+        });
+      });
+
+      dismiss.addEventListener('click', function() {
+        success.classList.remove('opacity-100', 'translate-y-0');
+        success.classList.add('opacity-0', 'translate-y-8');
+        setTimeout(() => {
+          success.classList.add('hidden');
+          submitBtn.disabled = false;
+          messageShown = false;
+        }, 500);
+      });
+    }
+
+    // On DOM ready, add contact form logic
+    window.addEventListener('DOMContentLoaded', () => {
+      setupContactForm && setupContactForm();
+    });
+  </script>
+</body>
+</html>
