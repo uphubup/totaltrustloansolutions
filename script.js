@@ -269,6 +269,78 @@ function setupOtherFields() {
   }
 }
 
+// Responsive Mobile Nav Toggle
+(function() {
+  const navToggle = document.getElementById('mobile-nav-toggle');
+  const nav = document.getElementById('main-nav');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+  let isOpen = false;
+
+  function isMobile() {
+    return window.innerWidth < 768;
+  }
+
+  function openMenu() {
+    nav.classList.remove('hidden');
+    navToggle.classList.add('bg-[#8b2331]');
+    hamburgerIcon.classList.add('hidden');
+    closeIcon.classList.remove('hidden');
+    isOpen = true;
+    setTimeout(() => {
+      document.addEventListener('click', handleOutsideClick);
+    }, 0);
+  }
+
+  function closeMenu() {
+    nav.classList.add('hidden');
+    navToggle.classList.remove('bg-[#8b2331]');
+    hamburgerIcon.classList.remove('hidden');
+    closeIcon.classList.add('hidden');
+    isOpen = false;
+    document.removeEventListener('click', handleOutsideClick);
+  }
+
+  function handleToggle(e) {
+    e.stopPropagation();
+    if (!isMobile()) return;
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  function handleOutsideClick(e) {
+    if (!isMobile()) return;
+    if (!nav.contains(e.target) && e.target !== navToggle && !navToggle.contains(e.target)) {
+      closeMenu();
+    }
+  }
+
+  function handleResize() {
+    if (!isMobile()) {
+      closeMenu();
+      nav.classList.remove('hidden');
+    } else {
+      nav.classList.add('hidden');
+      closeMenu();
+    }
+  }
+
+  if (navToggle && nav && hamburgerIcon && closeIcon) {
+    navToggle.addEventListener('click', handleToggle);
+    // Auto-close on nav link click (mobile only)
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function() {
+        if (isMobile()) closeMenu();
+      });
+    });
+    window.addEventListener('resize', handleResize);
+    handleResize();
+  }
+})();
+
 // On DOM ready
 window.addEventListener('DOMContentLoaded', () => {
   animateOnScroll();

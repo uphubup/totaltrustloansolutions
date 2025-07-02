@@ -10,22 +10,24 @@
 
   <!-- Header with Navigation -->
   <header class="bg-[#a62d3c] shadow-md animate-fadeInDown">
-    <div class="max-w-7xl mx-auto flex items-center py-4 px-4">
-      <div class="flex items-center gap-3">
-        <!-- Logo Placeholder -->
-        <div class="flex items-center justify-center">
-          <img src="logo.png" alt="Company Logo" class="w-20 h-20 object-contain block" />
+    <div class="max-w-7xl mx-auto py-4 px-4">
+      <div class="flex flex-col items-center md:flex-row md:items-center md:gap-0 md:justify-start w-full">
+        <!-- Logo (left) -->
+        <div class="flex-shrink-0 flex justify-center md:justify-start w-full md:w-auto">
+          <img src="logo.png" alt="Company Logo" class="w-16 h-16 md:w-20 md:h-20 object-contain block md:mr-4" />
         </div>
-        <span class="ml-2 text-3xl font-extrabold text-white drop-shadow-lg tracking-wide px-2 py-1 rounded bg-[#a62d3c]/80 border-2 border-white shadow">
+        <!-- Company Name (center, white border box) -->
+        <span class="mt-2 md:mt-0 md:ml-2 md:mr-8 text-2xl md:text-3xl font-extrabold text-white drop-shadow-lg tracking-wide px-4 py-1 rounded border-2 border-white shadow bg-[#a62d3c]/80 text-center md:text-left whitespace-nowrap">
           Total Trust <span class="text-[#ffe5e5] font-black">Loan Solutions</span>
         </span>
+        <!-- Nav Links (right, inline) -->
+        <nav class="flex flex-wrap justify-center gap-2 md:gap-8 mt-2 md:mt-0 md:ml-0 text-base md:text-lg font-semibold w-full md:w-auto md:flex-row md:items-center">
+          <a href="index.html" class="px-2 py-1 rounded text-[#ffe5e5] underline font-bold transition text-sm md:text-lg">Home</a>
+          <a href="calculator.html" class="px-2 py-1 rounded text-white hover:text-[#ffe5e5] hover:underline transition text-sm md:text-lg">Loan Calculator</a>
+          <a href="about.html" class="px-2 py-1 rounded text-white hover:text-[#ffe5e5] hover:underline transition text-sm md:text-lg">About Us</a>
+          <a href="contact.html" class="px-2 py-1 rounded text-white hover:text-[#ffe5e5] hover:underline transition text-sm md:text-lg">Contact Us</a>
+        </nav>
       </div>
-      <nav class="flex gap-8 text-lg font-semibold ml-8">
-        <a href="index.html" class="text-[#ffe5e5] underline font-bold transition">Home</a>
-        <a href="calculator.html" class="text-white hover:text-[#ffe5e5] hover:underline transition">Loan Calculator</a>
-        <a href="about.html" class="text-white hover:text-[#ffe5e5] hover:underline transition">About Us</a>
-        <a href="contact.html" class="text-white hover:text-[#ffe5e5] hover:underline transition">Contact Us</a>
-      </nav>
     </div>
   </header>
 
@@ -38,9 +40,6 @@
         <span class="font-extrabold tracking-tight">FASTEST RELIABLE LOAN</span><br>
         <span class="font-semibold">PROVIDERS IN TOWN</span>
       </h1>
-      <p class="text-white text-base sm:text-lg md:text-xl mb-8 font-medium drop-shadow">
-        Get instant loans up to ₹50,000 disbursed in minutes.
-      </p>
       <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
         <a href="contact.html" class="bg-[#a62d3c] hover:bg-[#8b2331] text-white font-bold py-3 px-8 rounded shadow transition text-lg">
           Apply Now
@@ -190,8 +189,31 @@
   <section class="bg-white py-12 text-center animate-fadeInUp">
     <div class="max-w-4xl mx-auto px-4">
       <h2 class="text-2xl font-bold text-[#222] mb-8">FREQUENTLY ASKED <span class="text-[#a62d3c]">QUESTIONS</span></h2>
-      <div id="faq" class="space-y-4 text-left">
-        <!-- FAQ items will be inserted here by JS -->
+      <div class="space-y-4 text-left">
+        <div class="border border-[#a62d3c]/30 rounded-lg overflow-hidden">
+          <button type="button" class="w-full flex justify-between items-center px-6 py-4 bg-[#f7f0e7] text-lg font-semibold text-left focus:outline-none transition">
+            <span>How fast can I get a loan approved?</span>
+          </button>
+          <div class="bg-white px-6 py-4 text-base text-[#333]">
+            Most applications are approved within minutes. Once approved, funds are typically disbursed within a few hours to your bank account.
+          </div>
+        </div>
+        <div class="border border-[#a62d3c]/30 rounded-lg overflow-hidden">
+          <button type="button" class="w-full flex justify-between items-center px-6 py-4 bg-[#f7f0e7] text-lg font-semibold text-left focus:outline-none transition">
+            <span>What documents do I need to apply?</span>
+          </button>
+          <div class="bg-white px-6 py-4 text-base text-[#333]">
+            Usually, you need a valid government ID (like Aadhaar or PAN), proof of income (salary slip or bank statement), and proof of address.
+          </div>
+        </div>
+        <div class="border border-[#a62d3c]/30 rounded-lg overflow-hidden">
+          <button type="button" class="w-full flex justify-between items-center px-6 py-4 bg-[#f7f0e7] text-lg font-semibold text-left focus:outline-none transition">
+            <span>Can I repay my loan early?</span>
+          </button>
+          <div class="bg-white px-6 py-4 text-base text-[#333]">
+            Yes, most lenders allow early repayment. Some may charge a small prepayment fee, so check with your lender.
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -212,5 +234,17 @@
     @keyframes fadeInRight { from { opacity:0; transform:translateX(30px);} to {opacity:1; transform:none;} }
   </style>
   <script src="script.js"></script>
+  <script>
+    // Mobile nav toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const navToggle = document.getElementById('mobile-nav-toggle');
+      const nav = document.getElementById('main-nav');
+      if (navToggle && nav) {
+        navToggle.addEventListener('click', function() {
+          nav.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
 </body>
 </html> 

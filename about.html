@@ -9,21 +9,24 @@
 <body class="bg-white text-[#222] font-sans">
   <!-- Header with Navigation (same as homepage, with subtle animation) -->
   <header class="bg-[#a62d3c] shadow-md animate-fadeInDown">
-    <div class="max-w-7xl mx-auto flex items-center py-4 px-4">
-      <div class="flex items-center gap-3">
-        <div class="flex items-center justify-center">
-          <img src="logo.png" alt="Company Logo" class="w-20 h-20 object-contain block" />
+    <div class="max-w-7xl mx-auto py-4 px-4">
+      <div class="flex flex-col items-center md:flex-row md:items-center md:gap-0 md:justify-start w-full">
+        <!-- Logo (left) -->
+        <div class="flex-shrink-0 flex justify-center md:justify-start w-full md:w-auto">
+          <img src="logo.png" alt="Company Logo" class="w-16 h-16 md:w-20 md:h-20 object-contain block md:mr-4" />
         </div>
-        <span class="ml-2 text-3xl font-extrabold text-white drop-shadow-lg tracking-wide px-2 py-1 rounded bg-[#a62d3c]/80 border-2 border-white shadow">
+        <!-- Company Name (center, white border box) -->
+        <span class="mt-2 md:mt-0 md:ml-2 md:mr-8 text-2xl md:text-3xl font-extrabold text-white drop-shadow-lg tracking-wide px-4 py-1 rounded border-2 border-white shadow bg-[#a62d3c]/80 text-center md:text-left whitespace-nowrap">
           Total Trust <span class="text-[#ffe5e5] font-black">Loan Solutions</span>
         </span>
+        <!-- Nav Links (right, inline) -->
+        <nav class="flex flex-wrap justify-center gap-2 md:gap-8 mt-2 md:mt-0 md:ml-0 text-base md:text-lg font-semibold w-full md:w-auto md:flex-row md:items-center">
+          <a href="index.html" class="px-2 py-1 rounded text-white hover:text-[#ffe5e5] hover:underline transition text-sm md:text-lg">Home</a>
+          <a href="calculator.html" class="px-2 py-1 rounded text-white hover:text-[#ffe5e5] hover:underline transition text-sm md:text-lg">Loan Calculator</a>
+          <a href="about.html" class="px-2 py-1 rounded text-[#ffe5e5] underline font-bold transition text-sm md:text-lg">About Us</a>
+          <a href="contact.html" class="px-2 py-1 rounded text-white hover:text-[#ffe5e5] hover:underline transition text-sm md:text-lg">Contact Us</a>
+        </nav>
       </div>
-      <nav class="flex gap-8 text-lg font-semibold ml-8">
-        <a href="index.html" class="text-white hover:text-[#ffe5e5] hover:underline transition">Home</a>
-        <a href="calculator.html" class="text-white hover:text-[#ffe5e5] hover:underline transition">Loan Calculator</a>
-        <a href="about.html" class="text-[#ffe5e5] underline font-bold transition">About Us</a>
-        <a href="contact.html" class="text-white hover:text-[#ffe5e5] hover:underline transition">Contact Us</a>
-      </nav>
     </div>
   </header>
 
@@ -135,6 +138,16 @@
         section.classList.add('opacity-0');
         observer.observe(section);
       });
+    });
+    // Mobile nav toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const navToggle = document.getElementById('mobile-nav-toggle');
+      const nav = document.getElementById('main-nav');
+      if (navToggle && nav) {
+        navToggle.addEventListener('click', function() {
+          nav.classList.toggle('hidden');
+        });
+      }
     });
   </script>
 </body>
